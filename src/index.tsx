@@ -3,13 +3,30 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import Login from './components/Login';
+import { register } from './actions/connect';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<>
+			<Route path='/Clickermon' element={<App/>}>
+				<Route path='register' element={<Login login={false} />}/>
+				<Route path="register/true" action={register} />
+				<Route path='login' element={<Login login/>}/>
+			</Route>
+			<Route path='*' element={<Login login/>}/>
+
+		</>
+	)
+);
 root.render(
   <React.StrictMode>
-    <App />
+	<RouterProvider router={router}/>
   </React.StrictMode>
 );
 
