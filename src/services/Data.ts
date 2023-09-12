@@ -1,4 +1,4 @@
-import { UserData } from "../interfaces/userDataInterface";
+import { PatchUserData, UserData } from "../interfaces/userDataInterface";
 
 export default class Data {
 	private static instance:Data;
@@ -33,5 +33,32 @@ export default class Data {
 			.then(data => {console.log(data);return data})
 			.catch(error => console.log("Error caught in loadUserData"))
 	}
+	
+	async saveUserData(data:PatchUserData, id:number){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				'Content-Type' : 'application/merge-patch+json'
+			}),
+			method: "PATCH",
+			body : JSON.stringify(data)
+		};
+		return fetch(this.base_url+"/api/users/"+id, myInit)
+			.then(response => {return response.json()})
+			.then(data => {console.log(data);return data})
+			.catch(error => console.log("Error caught in saveUserData"))
+	}
 
+	async loadAllUpgrades(){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token
+			}),
+			method: "GET",
+		};
+		return fetch(this.base_url+"/api/upgrades", myInit)
+			.then(response => {return response.json()})
+			.then(data => {console.log(data);return data})
+			.catch(error => console.log("Error caught in loadUserData"))
+	}
 }

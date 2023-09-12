@@ -1,4 +1,5 @@
 export interface UserData {
+    id : number,
     username : string,
     money:number,
     clicIncome : number,
@@ -21,4 +22,10 @@ export interface UserWorker{
     idWorker: number,
     calculatedIncome : number,
     quantity : number
+}
+
+export interface PatchUserData{
+    money? : number,
+    clicIncome? : number,
+    lastConnection? : string,
 }
