@@ -21,11 +21,10 @@ const router = createBrowserRouter(
 				<Route path="register/true" action={register} />
 				<Route path='login' element={<Login login/>}/>
 				<Route path='login/true' action={login}/>
-				<Route path='' element={<Game />}/>
-				<Route path='' loader={loadData}/>
+				<Route path='' element={<Game />} loader={loadData}/>
 			</Route>
 			<Route path='*' element={<Login login/>}/>
-
+			<Route path='/true' action={login}/>
 		</>
 	)
 );

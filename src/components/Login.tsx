@@ -11,7 +11,7 @@ const Login = (props:LoginProps) => {
     const fetcher = useFetcher();
     const navigate = useNavigate()
     return (
-        <Container fullWidth justifyContent="center">
+        <Container width="100%" justifyContent="center">
             <Container rounded>
                 <fetcher.Form  action="true" method="post" style={{display:'flex', flexDirection:'column'}}>
                     <Container gap={1}>

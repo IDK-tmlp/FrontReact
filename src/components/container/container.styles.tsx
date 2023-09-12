@@ -20,7 +20,8 @@ export interface ContainerProps
 	alignSelf?: string,
 	justifyContent?: string,
 	hidden?: boolean,
-	fullWidth?: boolean,
+	width?: string,
+	height? : string,
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -88,5 +89,7 @@ export const Container = styled.div<ContainerProps>`
 
 	${props => props.marginTop && css`margin-top: ${props.marginTop}px;`}
 
-	${props => props.fullWidth && css`width: 100%;`}
+	${props => props.width && css`width: ${props.width};`}
+
+	${props => props.height && css`height: ${props.height};`}
 `;

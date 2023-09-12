@@ -22,7 +22,7 @@ export const login = async ({request}:ActionFunctionArgs)=>{
     const password = formData.get("password") as string;
     const co = Connexion.getInstance();
     const reussi : string = await co.login(username, password);
-    document.cookie = reussi;
+    document.cookie = "token=" + reussi;
     // console.log(reussi);
     if (reussi){
         return redirect("/ClickerMon");
