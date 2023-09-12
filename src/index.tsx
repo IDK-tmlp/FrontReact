@@ -5,7 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Login from './components/Login';
-import { register } from './actions/connect';
+import { register, login } from './actions/connect';
+import Game from './components/Game/Game';
+import { loadData } from './loaders/loadData';
 
 
 const root = ReactDOM.createRoot(
@@ -18,6 +20,9 @@ const router = createBrowserRouter(
 				<Route path='register' element={<Login login={false} />}/>
 				<Route path="register/true" action={register} />
 				<Route path='login' element={<Login login/>}/>
+				<Route path='login/true' action={login}/>
+				<Route path='' element={<Game />}/>
+				<Route path='' loader={loadData}/>
 			</Route>
 			<Route path='*' element={<Login login/>}/>
 

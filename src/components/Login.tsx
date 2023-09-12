@@ -20,15 +20,15 @@ const Login = (props:LoginProps) => {
                     </Container>
                     <Container gap={1}>
                         <label htmlFor="password">Password : </label>
-                        <input type="text" name="password" placeholder="***********"/>
+                        <input type="password" name="password" placeholder="***********" />
                     </Container>
                     {!props.login &&
                         <Container gap={1}>
                             <label htmlFor="confirmPassword">Confirm password : </label>
-                            <input type="text" name="confirmPassword" placeholder="***********"/>
+                            <input type="password" name="confirmPassword" placeholder="***********" />
                         </Container>
                     }
-                    <Button type="submit">Register</Button>
+                    <Button type="submit">{props.login ? "Login" :"Register"}</Button>
                 </fetcher.Form >
             </Container>
         </Container>

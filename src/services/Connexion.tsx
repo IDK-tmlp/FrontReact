@@ -1,5 +1,3 @@
-import { redirect } from "react-router-dom";
-
 export default class Connexion {
 	private static instance:Connexion;
 	base_url : string;
@@ -26,7 +24,7 @@ export default class Connexion {
 		};
 		return fetch(this.base_url+"/api/register", myInit)
 			.then(response => {return response.json()})
-			.then(test => {return redirect("/ClickerMon/login");})
+			.then(data => { return data })
 			.catch(error => console.log("Error caught in register"))
 	}
 	
