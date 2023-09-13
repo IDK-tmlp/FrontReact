@@ -13,7 +13,7 @@ interface RowItemProps {
 
 const RowItem = (props : RowItemProps) => {
     return (
-        <Container rounded alignItems="center" padding="15px" gap={1} justifyContent="center">
+        <Container rounded alignItems="center" padding="15px" gap={1} justifyContent="space-between" margin="0" width="80%">
             <Button shadow rounded style={{width:"40px", height:'40px'}}>
                 <img src={props.icon} alt={props.name} style={{width:"40px", height:'40px'}}/>
             </Button>
@@ -22,9 +22,11 @@ const RowItem = (props : RowItemProps) => {
                 {/* TODO : hide if more than x char and show on hover */}
                 {props.desc && <Text smaller>{props.desc}</Text>}
             </Container>
-            <Container margin="0">
-                <Text>{props.quantity}</Text>
-            </Container>
+            {props.quantity && 
+                <Container margin="0">
+                    <Text>{props.quantity}</Text>
+                </Container>
+            }
             <Container margin="0">
                 <Button shadow rounded style={{width:"40px", height:'40px'}}>{props.price}</Button>
             </Container>

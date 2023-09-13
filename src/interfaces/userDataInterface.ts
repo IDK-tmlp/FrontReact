@@ -7,7 +7,6 @@ export interface UserData {
     userupgrades : Upgrade[],
     userworkers : UserWorker[],
 }
-
 export interface Upgrade{
     id : number,
     upgradeName : string,
@@ -15,7 +14,13 @@ export interface Upgrade{
     price : number,
     affectedWorkers : [],
 }
-
+export interface Worker{
+    id : number,
+    name : string,
+    basePrice : number,
+    baseIncome : number,
+    idWorkerType : string,
+}
 export interface UserWorker{
     id : number,
     idUser:number,
@@ -23,7 +28,6 @@ export interface UserWorker{
     calculatedIncome : number,
     quantity : number
 }
-
 export interface PatchUserData{
     money? : number,
     clicIncome? : number,

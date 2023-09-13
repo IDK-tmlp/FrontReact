@@ -6,7 +6,7 @@ export default class Data {
     token : string;
     
 	private constructor(){
-        this.base_url = "https://127.0.0.1:8000";
+        this.base_url = "http://127.0.0.1:8000";
         this.token = Data.getCookie('token');
 	}
     
@@ -24,7 +24,8 @@ export default class Data {
 	async loadUserData() : Promise<UserData>{
 		const myInit = {
 			headers: new Headers({
-				Authorization : 'Bearer ' + this.token
+				Authorization : 'Bearer ' + this.token,
+				Accept : "application/json"
 			}),
 			method: "GET",
 		};
@@ -52,13 +53,31 @@ export default class Data {
 	async loadAllUpgrades(){
 		const myInit = {
 			headers: new Headers({
-				Authorization : 'Bearer ' + this.token
+				Authorization : 'Bearer ' + this.token,
+				Accept : "application/json"
 			}),
 			method: "GET",
 		};
 		return fetch(this.base_url+"/api/upgrades", myInit)
 			.then(response => {return response.json()})
-			.then(data => {console.log(data);return data})
+			.then(data => {
+				// console.log("Upgrades : ", data);
+				return data})
+			.catch(error => console.log("Error caught in loadUserData"))
+	}
+	async loadAllWorkers(){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				Accept : "application/json"
+			}),
+			method: "GET",
+		};
+		return fetch(this.base_url+"/api/workers", myInit)
+			.then(response => {return response.json()})
+			.then(data => {
+				// console.log("Worker : ", data);
+				return data})
 			.catch(error => console.log("Error caught in loadUserData"))
 	}
 }

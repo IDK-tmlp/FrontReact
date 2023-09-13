@@ -3,7 +3,7 @@ export default class Connexion {
 	base_url : string;
 
 	private constructor(){
-		this.base_url = "https://127.0.0.1:8000";
+		this.base_url = "http://127.0.0.1:8000";
 	}
 
 	public static getInstance(): Connexion {
