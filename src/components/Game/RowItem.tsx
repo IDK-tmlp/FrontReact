@@ -14,8 +14,8 @@ interface RowItemProps {
 const RowItem = (props : RowItemProps) => {
     return (
         <Container rounded alignItems="center" padding="15px" gap={1} justifyContent="space-between" margin="0" width="80%">
-            <Button shadow rounded style={{width:"40px", height:'40px'}}>
-                <img src={props.icon} alt={props.name} style={{width:"40px", height:'40px'}}/>
+            <Button shadow style={{width:"40px", height:'40px'}}>
+                <img src={props.icon} alt={props.name} style={{width:"30px", height:'30px'}}/>
             </Button>
             <Container column gap={0} margin="0">
                 <Text>{props.name}</Text>

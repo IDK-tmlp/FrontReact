@@ -6,6 +6,7 @@ import Assets from "../../assets";
 
 interface UpgradesProps {
     upgrades : Upgrade[],
+    userUpgrades:any
 }
 
 const Upgrades = (props:UpgradesProps) => {
@@ -17,7 +18,7 @@ const Upgrades = (props:UpgradesProps) => {
         <Container column rounded padding="10px" width="90%" alignItems="center" gap={1}>
             <Text>Upgrades</Text>
             {props.upgrades[0] !== undefined && props.upgrades.map( upgrade => {
-                return <RowItem icon={Assets.images.pokeball} name={upgrade.upgradeName} price={upgrade.price} desc={trimDesc(upgrade.upgradeDesc)}/>
+                return <RowItem icon={Assets.icons.kiwan} name={upgrade.upgradeName} price={upgrade.price} desc={trimDesc(upgrade.upgradeDesc)}/>
             })}
         </Container>
     );

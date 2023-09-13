@@ -41,8 +41,8 @@ const Game = () => {
 					<Text>Pokedollars : {money}</Text>
 					<Text>Clic income : {userData.clicIncome}</Text>
 				</Container>
-				<Upgrades upgrades={upgrades || []} />
-				<Workers workers={workers || []}/>
+				<Upgrades upgrades={upgrades || []} userUpgrades={userData.userupgrades} />
+				<Workers workers={workers || []} userWorkers={userData.userworkers}/>
 			</Container>
 
 			<Container column width="50%" height="100vh" margin="0" alignItems="center" gap={1}>

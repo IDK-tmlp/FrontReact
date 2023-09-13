@@ -23,8 +23,8 @@ export interface Worker{
 }
 export interface UserWorker{
     id : number,
-    idUser:number,
-    idWorker: number,
+    idUser:string,
+    idWorker: string,
     calculatedIncome : number,
     quantity : number
 }
