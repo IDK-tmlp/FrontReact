@@ -28,6 +28,12 @@ export interface UserWorker{
     calculatedIncome : number,
     quantity : number
 }
+export interface UserRelated{
+    id : number,
+    userworkers : Array<[Worker, number,number]>,
+    userupgrades : Upgrade[],
+    
+}
 export interface PatchUserData{
     money? : number,
     clicIncome? : number,

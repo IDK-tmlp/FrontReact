@@ -80,4 +80,20 @@ export default class Data {
 				return data})
 			.catch(error => console.log("Error caught in loadUserData"))
 	}
+
+	async loadUserRelated(){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				Accept : "application/json"
+			}),
+			method: "GET",
+		};
+		return fetch(this.base_url+"/api/user/related", myInit)
+			.then(response => {return response.json()})
+			.then(data => {
+				// console.log(data);
+				return data})
+			.catch(error => console.log("Error caught in loadUserRelated"))
+	}
 }

@@ -9,11 +9,15 @@ interface RowItemProps {
     disabled? : boolean,
     quantity? : number,
     price:number,
+    buyable? : boolean,
+    onBuyItem : ()=>void,
+    
 }
 
 const RowItem = (props : RowItemProps) => {
+
     return (
-        <Container rounded alignItems="center" padding="15px" gap={1} justifyContent="space-between" margin="0" width="80%">
+        <Container rounded alignItems="center" padding="15px" gap={1} justifyContent="space-between" margin="0" width="80%" style={props.disabled ? {opacity:"0.7", backgroundColor: 'gray'} : {}}>
             <Button shadow style={{width:"40px", height:'40px'}}>
                 <img src={props.icon} alt={props.name} style={{width:"30px", height:'30px'}}/>
             </Button>
@@ -28,7 +32,7 @@ const RowItem = (props : RowItemProps) => {
                 </Container>
             }
             <Container margin="0">
-                <Button shadow rounded style={{width:"40px", height:'40px'}}>{props.price}</Button>
+                <Button disabled={props.buyable} shadow rounded style={{width:"40px", height:'40px'}}>{props.price}</Button>
             </Container>
         </Container>
     );
