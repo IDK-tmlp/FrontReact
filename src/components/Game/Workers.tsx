@@ -3,37 +3,48 @@ import RowItem from "./RowItem";
 import { Assets } from '../../assets/index';
 import { Text } from "../text/text.styles";
 import { Worker } from "../../interfaces/userDataInterface";
+import Data from "../../services/Data";
 
 interface WorkersProps {
-	workers : Worker[],
-	userWorkers :Array<[Worker, number,number]>,
+	workers: Worker[],
+	userWorkers: Array<[Worker, number, number]>,
+	money: number,
 }
 
-const Workers = (props:WorkersProps) => {
-	
-	// const getRealId = (idWorker : string)=>{
-	//     return Number(idWorker.split("/").pop())
-	// }
+const Workers = (props: WorkersProps) => {
 
-	let income  = (uw : Array<[Worker, number,number]>)=>{
+	const getUserWorkers = (userW: Array<[Worker, number, number]>) =>{
+		return userW.map(wo => {return wo[0]})
+	}
+	const userWorkerOnly = getUserWorkers(props.userWorkers);
+
+	let totalIncome = (uw: Array<[Worker, number, number]>) => {
 		let sum = 0;
 		uw.forEach(w => {
-			sum += w[1]*w[2]
+			sum += w[1] * w[2]
 		})
 		return sum;
 	}
-	console.log(income(props.userWorkers));
-	
+	const handleBuyNewWorker = (id: number) => {
+		const db = Data.getInstance();
+		db.addUserWorker(id);
+	}
+	const handleBuyMoreWorker = (id : number, quantity: number) => {
+		props.userWorkers.forEach(workerData => {workerData[0].id === id && workerData[1]++});
+		const db = Data.getInstance();
+		db.patchUserWorker(id, {'quantity' : quantity})
+	}
+
 	return (
 		<Container column rounded padding="10px" width="90%" alignItems="center" gap={1}>
 			<Text>Pokemon</Text>
-			{props.workers[0] !== undefined && 
-				props.workers.sort((a,b)=> a.id - b.id).map((worker,index) => {
+			{props.workers[0] !== undefined &&
+				props.workers.sort((a, b) => a.id - b.id).map((worker, index) => {
 					const userWorker = props.userWorkers[index]
-					return userWorker !==undefined && userWorker[0].id === worker.id ? 
-						<RowItem buyable={true} onBuyItem={()=>{}} icon={Assets.images.pokeball} name={worker.name} price={worker.basePrice} quantity={userWorker[1]} desc={(userWorker[1]*userWorker[2]).toString()+" / s"}/>:
-						<RowItem disabled onBuyItem={()=>{}} icon={Assets.images.pokeball} name={worker.name} price={worker.basePrice} quantity={0} desc={worker.baseIncome.toString()+" / s"}/>
-			})}
+					return userWorker !== undefined && userWorker[0].id === worker.id ?
+						<RowItem buyable={props.money >= worker.basePrice} onBuyItem={() => {handleBuyMoreWorker(worker.id,1)}} icon={Assets.images.pokeball} name={worker.name} price={worker.basePrice} quantity={userWorker[1]} desc={(userWorker[1] * userWorker[2]).toString() + " / s"} key={worker.id} /> :
+						<RowItem buyable={props.money >= worker.basePrice} disabled onBuyItem={() => { }} icon={Assets.images.pokeball} name={worker.name} price={worker.basePrice} quantity={0} desc={worker.baseIncome.toString() + " / s"} key={worker.id} />
+				})}
 		</Container>
 	);
 }

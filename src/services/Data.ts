@@ -96,4 +96,37 @@ export default class Data {
 				return data})
 			.catch(error => console.log("Error caught in loadUserRelated"))
 	}
+
+
+	// Not tested yet
+
+	async addUserWorker(id : number){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				'Content-Type' : 'application/json'
+			}),
+			method: "POST",
+			body : JSON.stringify({'id' : id})
+		};
+		return fetch(this.base_url+"/api/user/workers/"+id, myInit)
+			.then(response => {return response.json()})
+			.then(data => {console.log(data);return data})
+			.catch(error => console.log("Error caught in addUserWorker"))
+	}
+
+	async patchUserWorker(id:number, data:any){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				'Content-Type' : 'application/merge-patch+json'
+			}),
+			method: "PATCH",
+			body : JSON.stringify(data)
+		};
+		return fetch(this.base_url+"/api/user/workers/"+id, myInit)
+			.then(response => {return response.json()})
+			.then(data => {console.log(data);return data})
+			.catch(error => console.log("Error caught in patchUserWorker"))
+	}
 }

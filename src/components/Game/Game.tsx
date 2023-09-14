@@ -6,6 +6,7 @@ import { Assets } from '../../assets/index';
 import { Button } from "../button/button.styles";
 import { useEffect, useState } from "react";
 import { FiSave } from 'react-icons/fi';
+import { LuPowerOff } from 'react-icons/lu';
 import Data from "../../services/Data";
 import Upgrades from "./Upgrades";
 import Workers from "./Workers";
@@ -55,7 +56,7 @@ const Game = () => {
 					<Text>Clic income : {userData.clicIncome}</Text>
 				</Container>
 				<Upgrades upgrades={upgrades || []} userUpgrades={userData.userupgrades} />
-				<Workers workers={workers || []} userWorkers={related?.userworkers || []} />
+				<Workers workers={workers || []} userWorkers={related?.userworkers || []} money={money} />
 			</Container>
 
 			<Container column width="50%" height="100vh" margin="0" alignItems="center" gap={1}>
@@ -72,8 +73,10 @@ const Game = () => {
 					<Text>Username : {userData.username}</Text>
 					<Text>Pokedollars : {userData.money}</Text>
 					<Text>Id user : {userData.id}</Text>
-					<Button rounded style={{padding:'10px', width:'60px', height:'60px'}} onClick={handleSave}><FiSave size={50}/></Button>
-					<Button style={{padding:'10px', width:'60px', height:'60px'}} onClick={handleDisconnection}>Disconnect</Button>
+					<Container gap={1}>
+						<Button rounded style={{padding:'10px', width:'60px', height:'60px'}} onClick={handleSave}><FiSave size={50}/></Button>
+						<Button rounded style={{padding:'10px', width:'60px', height:'60px'}} onClick={handleDisconnection}><LuPowerOff size={50}/></Button>
+					</Container>
 
 				</Container>
 			</Container>

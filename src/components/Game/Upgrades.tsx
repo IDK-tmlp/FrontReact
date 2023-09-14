@@ -18,7 +18,7 @@ const Upgrades = (props:UpgradesProps) => {
         <Container column rounded padding="10px" width="90%" alignItems="center" gap={1}>
             <Text>Upgrades</Text>
             {props.upgrades[0] !== undefined && props.upgrades.map( upgrade => {
-                return <RowItem onBuyItem={()=>{}} icon={Assets.icons.kiwan} name={upgrade.upgradeName} price={upgrade.price} desc={trimDesc(upgrade.upgradeDesc)}/>
+                return <RowItem key={upgrade.id} onBuyItem={()=>{}} icon={Assets.icons.kiwan} name={upgrade.upgradeName} price={upgrade.price} desc={trimDesc(upgrade.upgradeDesc)}/>
             })}
         </Container>
     );

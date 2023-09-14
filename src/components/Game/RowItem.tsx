@@ -31,8 +31,8 @@ const RowItem = (props : RowItemProps) => {
                     <Text>{props.quantity}</Text>
                 </Container>
             }
-            <Container margin="0">
-                <Button disabled={props.buyable} shadow rounded style={{width:"40px", height:'40px'}}>{props.price}</Button>
+            <Container rounded padding="2px" margin="0" style={!props.buyable ? {opacity:"0.7", backgroundColor: 'red', width:"40px", height:'40px'} : {backgroundColor: 'lime'}}>
+                <Button shadow rounded style={{width:"40px", height:'40px'}} onClick={props.onBuyItem}>{props.price}</Button>
             </Container>
         </Container>
     );
