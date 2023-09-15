@@ -8,6 +8,8 @@ import Login from './components/Login';
 import { register, login } from './actions/connect';
 import Game from './components/Game/Game';
 import { loadData } from './loaders/loadData';
+import Play from './components/Play';
+import Credits from './components/Credits';
 
 
 const root = ReactDOM.createRoot(
@@ -22,8 +24,9 @@ const router = createBrowserRouter(
 				<Route path='login' element={<Login login/>}/>
 				<Route path='login/true' action={login}/>
 				<Route path='' element={<Game />} loader={loadData}/>
+				<Route path='credits' element={<Credits/>}/>
 			</Route>
-			<Route path='*' element={<Login login/>}/>
+			<Route path='*' element={<Play/>}/>
 			<Route path='/true' action={login}/>
 		</>
 	)

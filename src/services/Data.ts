@@ -129,4 +129,19 @@ export default class Data {
 			.then(data => {console.log(data);return data})
 			.catch(error => console.log("Error caught in patchUserWorker"))
 	}
+
+	async addUserUpgrade(id : number){
+		const myInit = {
+			headers: new Headers({
+				Authorization : 'Bearer ' + this.token,
+				'Content-Type' : 'application/json'
+			}),
+			method: "POST",
+			body : JSON.stringify({'id' : id})
+		};
+		return fetch(this.base_url+"/api/user/upgrades/"+id, myInit)
+			.then(response => {return response.json()})
+			.then(data => {console.log(data);return data})
+			.catch(error => console.log("Error caught in addUserUpgrades"))
+	}
 }

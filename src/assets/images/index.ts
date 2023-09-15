@@ -1,10 +1,17 @@
-import sleepPika from './Pokemon-Wallpaper-with-Sleeping-Pikachu.webp';
+import sleepPika from './sleepPika.webp';
 import pokeball from './pokeball.svg'
+import pikachuApple from './pikachuApple.png'
+import poker from './poker.jpg'
+import playwp from './playwp.jpg'
 
 export const images =
 {
 	sleepPika,
-	pokeball
+	pokeball,
+	pikachuApple,
+	poker,
+	playwp,
+
 };
 
 export default images;
